@@ -1,0 +1,10 @@
+python pyinstxtractor.py demo.exe  将pyistaller打包的exe程序进行反编译 会在当前目录下生成一个反编译程序
+
+打开 PYZ-00.pyz_extracted 文件夹，这里分两种情况：
+
+第一种情况就是：如果目录下的文件名都是 .pyc.encrypted ，说明经过了加密(pyinstaller --key)，当然了我们也是可以解密的
+
+第二种情况就是：如果都是.pyc，那说明没有加密，我们可以使用 uncompyle6 将其反编译成.py文件（也就是源码）
+
+以反编译 Client.pyc 文件为例，我们在该目录下启动命令行，然后键入
+uncompyle6 -o Client.py Client.pyc
